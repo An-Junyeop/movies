@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { getMovies } from '../modules/movies';
 import Movies from '../components/Movies';
 
-function MoviesContainer() {
+function MoviesContainer({ page }) {
 	const { loading, data, error } = useSelector(state => state.movies.movies);
 	const dispatch = useDispatch();
 
@@ -12,8 +12,8 @@ function MoviesContainer() {
 	 * (6): dispatch된 thunk 함수를 redux-middleware에서 store의 dispatch와 getState를 파라미터로 넣어 실행
 	 * */
 	useEffect(() => {
-		dispatch(getMovies(2));
-	}, [dispatch]);
+		dispatch(getMovies(page));
+	}, [dispatch, page]);
 
 	if (loading) return <div>Loading ...</div>;
 	if (error) return <div>Error !!!</div>;
