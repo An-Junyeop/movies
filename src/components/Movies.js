@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Movies({ movies }) {
 	const paging = () => {
@@ -33,17 +33,13 @@ function Movies({ movies }) {
 	};
 
 	return (
-		<div
-			style={{
-				width: '1280px',
-				margin: '55px auto 15px auto',
-			}}
-		>
+		<>
 			{/* Paging */}
 			<div
 				style={{
 					marginBottom: '15px',
 					textAlign: 'center',
+					overflow: 'auto',
 				}}
 			>
 				{paging()}
@@ -55,7 +51,7 @@ function Movies({ movies }) {
 					display: 'flex',
 					flexWrap: 'wrap',
 					justifyContent: 'center',
-					alignItems: 'flex-start',
+					alignItems: 'center',
 				}}
 			>
 				{movies.results.map(movie => {
@@ -75,18 +71,11 @@ function Movies({ movies }) {
 								src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
 								alt={movie.title}
 							/>
-							<p
-								style={{
-									height: '15px',
-								}}
-							>
-								{movie.title}
-							</p>
 						</Link>
 					);
 				})}
 			</div>
-		</div>
+		</>
 	);
 }
 

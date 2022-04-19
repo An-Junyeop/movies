@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import Genre from './Genre';
 
 function Movie({ movie }) {
 	const navigate = useNavigate();
@@ -93,9 +94,9 @@ function Movie({ movie }) {
 				genres:{' '}
 				{genres.length &&
 					genres.map(genre => (
-						<span key={genre.id}>
-							{genre.id}, {genre.name} |{' '}
-						</span>
+						<Link to='/' key={genre.id}>
+							<Genre genre={genre} />
+						</Link>
 					))}
 			</div>
 			<div>
