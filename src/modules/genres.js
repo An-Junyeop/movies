@@ -22,8 +22,7 @@ export const selectGenre = id => ({ type: SELECT_GENRE, id });
 export const deselectGenre = id => ({ type: DESELECT_GENRE, id });
 
 const initialState = {
-	genres: reducerUtils.init(),
-	selectedGenres: [],
+	genres: reducerUtils.init([]),
 };
 
 /* Reducer */
@@ -40,19 +39,37 @@ export default function genres(state = initialState, action) {
 		case SELECT_GENRE:
 			return {
 				...state,
-				selectedGenres: state.selectedGenres.concat(action.id),
+				genres: {
+					...state.genres,
+					data: state.genres.data.map(genre =>
+						genre.id === action.id
+							? { ...genre, isSelected: true }
+							: genre,
+					),
+				},
 			};
 		case DESELECT_GENRE:
 			return {
 				...state,
-				selectedGenres: state.selectedGenres.filter(
-					id => id !== action.id,
-				),
+				genres: {
+					...state.genres,
+					data: state.genres.data.map(genre =>
+						genre.id === action.id
+							? { ...genre, isSelected: false }
+							: genre,
+					),
+				},
 			};
 		case RESET_SELECTED_GENRES:
 			return {
 				...state,
-				selectedGenres: [],
+				genres: {
+					...state.genres,
+					data: state.genres.data.map(genre => ({
+						...genre,
+						isSelected: false,
+					})),
+				},
 			};
 		default:
 			return state;

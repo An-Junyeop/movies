@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Movies({ movies }) {
+	useEffect(() => {
+		console.log('Movies Mount');
+	});
+
 	const paging = () => {
 		let pages = [];
 

@@ -2,22 +2,19 @@ import { useDispatch } from 'react-redux';
 import { deselectGenre, selectGenre } from '../modules/genres';
 import React, { useCallback } from 'react';
 
-function Genre({ genre, isSelected }) {
+function Genre({ genre }) {
 	const dispatch = useDispatch();
 
-	const onClick = useCallback(
-		() => {
-			isSelected
-				? dispatch(deselectGenre(Number.parseInt(genre.id)))
-				: dispatch(selectGenre(Number.parseInt(genre.id)));
-		},
-		[dispatch, genre.id, isSelected],
-	);
+	const onClick = useCallback(() => {
+		genre.isSelected
+			? dispatch(deselectGenre(Number.parseInt(genre.id)))
+			: dispatch(selectGenre(Number.parseInt(genre.id)));
+	}, [dispatch, genre.id, genre.isSelected]);
 
 	return (
 		<span
 			style={
-				isSelected
+				genre.isSelected
 					? {
 							padding: '1px 3px',
 							border: '1px solid black',

@@ -19,7 +19,7 @@ export const getSearchMoviesAPI = async ({ genres, page }) => {
 		&language=ko-KR
 		&region=KR
 		&page=${page}
-		${genres}
+		${genres ? `&with_genres=${genres}` : ''}
 	`);
 	return data;
 };

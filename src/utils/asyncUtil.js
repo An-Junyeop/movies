@@ -1,11 +1,7 @@
-/* Promise에 기반한 Thunk 생성 함수
- * (3): 받아온 type을 기반으로 SUCCESS, ERROR type을 생성 후 thunk 함수 생성하여 반환
- * */
 export const createPromiseThunk = (type, promiseFn) => {
 	const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 
 	return param => async (dispatch, getState) => {
-		/* (7): 순서대로 dispatch */
 		dispatch({ type, param });
 
 		try {

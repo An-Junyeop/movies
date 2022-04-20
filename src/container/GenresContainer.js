@@ -5,11 +5,10 @@ import Genres from '../components/Genres';
 
 function GenresContainer() {
 	const { loading, data, error } = useSelector(state => state.genres.genres);
-	const selectedGenres = useSelector(state => state.genres.selectedGenres);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (!data) {
+		if (!data.length) {
 			dispatch(getGenres(null));
 		}
 	}, [data, dispatch]);
@@ -18,7 +17,7 @@ function GenresContainer() {
 	if (error) return <div>Error !!!</div>;
 	if (!data) return null;
 
-	return <Genres genres={data.genres} selectedGenres={selectedGenres} />;
+	return <Genres genres={data} />;
 }
 
-export default React.memo(GenresContainer);
+export default GenresContainer;

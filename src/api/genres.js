@@ -6,5 +6,5 @@ export const getGenresAPI = async () => {
 	?api_key=e6bfb3c9270e0abb8070d30f2aa8ad8c
 	&language=ko-KR`);
 
-	return data;
+	return data.genres.map(genre => ({ ...genre, isSelected: false }));
 };
