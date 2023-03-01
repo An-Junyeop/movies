@@ -9,12 +9,11 @@ function MoviesPage() {
 	return (
 		<div
 			style={{
-				width: '1280px',
+				maxWidth: '1280px',
 				margin: '55px auto 15px auto',
 			}}
 		>
-			{/* Genres */}
-			<GenresContainer />
+			<GenresContainer isAccumulated />
 			<MoviesContainer page={page} />
 		</div>
 	);

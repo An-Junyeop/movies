@@ -20,6 +20,7 @@ export const getGenres = createPromiseThunk(GET_GENRES, getGenresAPI);
 /* 액션 생성 함수 */
 export const selectGenre = id => ({ type: SELECT_GENRE, id });
 export const deselectGenre = id => ({ type: DESELECT_GENRE, id });
+export const resetSelectedGenres = () => ({ type: RESET_SELECTED_GENRES });
 
 const initialState = {
 	genres: reducerUtils.init([]),

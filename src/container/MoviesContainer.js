@@ -10,6 +10,7 @@ function MoviesContainer({ page }) {
 
 	useEffect(() => {
 		const selectedGenres = genres.filter(genre => genre.isSelected);
+
 		if (selectedGenres.length) {
 			dispatch(
 				getSearchMovies({
@@ -20,7 +21,7 @@ function MoviesContainer({ page }) {
 		} else {
 			dispatch(getMovies(page));
 		}
-	}, [dispatch, genres, page]);
+	}, [genres, page]);
 
 	if (loading) return <div>Loading ...</div>;
 	if (error) return <div>Error !!!</div>;

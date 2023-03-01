@@ -1,5 +1,5 @@
-import { useNavigate, Link } from 'react-router-dom';
-import Genre from './Genre';
+import { useNavigate } from 'react-router-dom';
+import Genres from './Genres';
 
 function Movie({ movie }) {
 	const navigate = useNavigate();
@@ -92,12 +92,9 @@ function Movie({ movie }) {
 			</div>
 			<div>
 				genres:{' '}
-				{genres.length &&
-					genres.map(genre => (
-						<Link to='/' key={genre.id}>
-							<Genre genre={genre} />
-						</Link>
-					))}
+				{genres.length && (
+					<Genres genres={genres} onClick={() => navigate('/')} />
+				)}
 			</div>
 			<div>
 				keywords:{' '}
